@@ -951,7 +951,17 @@ class Synset(_WordNetObject):
             return None
         len1 += depth
         len2 += depth
-        return (2.0 * depth) / (len1 + len2)
+       
+        if len1!= depth and len2!=depth :
+            return (2.0 * depth) / (len1 + len2)
+        elif len1 == depth :
+            return (2.0 * depth) / (len2 - depth)
+        elif len2 == depth :
+            return (2.0 * depth) / (len1 - depth)
+        else :
+            return
+
+         #return (2.0 * depth) / (len1 + len2)
 
     def res_similarity(self, other, ic, verbose=False):
         """
